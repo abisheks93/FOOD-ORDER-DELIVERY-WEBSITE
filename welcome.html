@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2f2fc6;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logout {
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        .welcome-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            margin-top: 60px;  /* To ensure it doesn't overlap with the header */
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .logout:hover {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Quick Food Deliver App</div>
+    <button class="logout" onclick="logout()">Logout</button>
+</header>
+
+<div class="welcome-container">
+    <h2>Welcome, <span id="name"></span>!</h2>
+    <p>You are successfully registered and logged in.</p>
+</div>
+
+<script>
+    // Fetch the 'username' query parameter from the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const username = urlParams.get('username');  // 'username' should match the key used in the backend
+
+    // Check if we got the username from the URL
+    if (username) {
+        document.getElementById('name').textContent = username;  // Display the username
+    } else {
+        document.getElementById('name').textContent = "Guest";  // Default if username not found
+    }
+
+    // Function for handling logout
+    function logout() {
+        // Redirect or perform any logout logic (for now, it will just reload the page)
+        alert('Logging out...');
+        window.location.href = "/login.html";  // Redirect to login page (adjust as needed)
+    }
+</script>
+
+</body>
+</html>
